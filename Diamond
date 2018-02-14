@@ -1,0 +1,57 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _10.Диамант
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+            var LeftRightDashes = (n - 1) / 2;
+            var MidDashes = 0;
+            var midstars = 0;
+            if (n % 2 == 0)
+            {
+                for (int i = 0; i < n - 1; i++)
+                {
+                    Console.WriteLine($"{new string('-', Math.Abs(LeftRightDashes))}*{new string('-', Math.Abs(MidDashes))}*{new string('-', Math.Abs(LeftRightDashes))}");
+                    LeftRightDashes--;
+                    if (i < (n / 2) - 1)
+                        MidDashes += 2;
+                    else
+                        MidDashes -= 2;
+
+                }
+            }
+            else
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    if (i == 0)
+                    {
+                        Console.WriteLine($"{new string('-', LeftRightDashes)}*{new string('-', LeftRightDashes)}");
+                        MidDashes++;
+                        LeftRightDashes--;
+                    }
+                    else if (i>0&&i<n-1)
+                    {
+                        Console.WriteLine($"{new string('-', Math.Abs(LeftRightDashes))}*{new string('-', Math.Abs(MidDashes))}*{new string('-', Math.Abs(LeftRightDashes))}");
+                        LeftRightDashes--;
+                        if (i < (n / 2))
+                            MidDashes += 2;
+                        else 
+                            MidDashes -= 2;
+                    }
+                    else
+                        Console.WriteLine($"{new string('-', Math.Abs(LeftRightDashes))}*{new string('-', Math.Abs(LeftRightDashes))}");
+
+                }
+
+            }
+        }
+    }
+}
