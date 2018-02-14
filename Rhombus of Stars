@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _06.Ромб_от_звездички
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int n = int.Parse(Console.ReadLine());
+
+            int numberOfStarsPerRow = 1;
+            int whitespacesPerRow = n - numberOfStarsPerRow;
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine($"{new string(' ', whitespacesPerRow)}{GenerateFrom("* ", numberOfStarsPerRow)}{new string(' ', whitespacesPerRow)}");
+                numberOfStarsPerRow++;
+                whitespacesPerRow--;
+            }
+            numberOfStarsPerRow--;
+            whitespacesPerRow++;
+            for (int j = 0; j < n; j++)
+            {
+                numberOfStarsPerRow--;
+                whitespacesPerRow++;
+                Console.WriteLine($"{new string(' ', whitespacesPerRow)}{GenerateFrom("* ", numberOfStarsPerRow)}{new string(' ', whitespacesPerRow)}");
+              
+            }
+
+
+        }
+
+        private static string GenerateFrom(string input, int times)
+        {
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < times; i++)
+            {
+                builder.Append(input);
+            }
+
+            return builder.ToString();
+        }
+    }
+}
